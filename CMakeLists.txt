@@ -10,19 +10,31 @@ project(Vulren
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_library(Vulren STATIC)
-target_sources(Vulren PUBLIC Library/include/Vulren/vulren.h Library/src/vulren.cpp)
+add_subdirectory(Libraries/result)
+add_subdirectory(Libraries/spdlog)
+
+
+add_library(Vulren STATIC
+        Library/src/Message.cpp
+        Library/include/Vulren/Message.hpp
+        Library/include/Vulren/vulren.hpp
+        Library/src/vulren.cpp
+        Library/src/Result.cpp
+        Library/include/Vulren/Result.hpp
+        Library/src/Logging.cpp
+        Library/src/internal/Logging.hpp
+        Library/include/Vulren/Logging.hpp
+)
 target_include_directories(Vulren
         PUBLIC Library/include
-        PRIVATE Library/src/private
+        PRIVATE Library/src/internal
 )
 target_link_libraries(Vulren
-        PUBLIC
+        PUBLIC spdlog Result
         PRIVATE
 )
 
-add_executable(Client)
-target_sources(Client PUBLIC Client/main.cpp)
+add_executable(Client Client/main.cpp)
 target_include_directories(Client
         PRIVATE Client
 )

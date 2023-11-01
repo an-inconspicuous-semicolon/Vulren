@@ -1,0 +1,6 @@
+[submodule "Libraries/result"]
+	path = Libraries/result
+	url = https://github.com/bitwizeshift/result
+[submodule "Libraries/spdlog"]
+	path = Libraries/spdlog
+	url = https://github.com/gabime/spdlog
