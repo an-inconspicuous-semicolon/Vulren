@@ -20,7 +20,8 @@ Message::Message(std::string name, std::string description, std::source_location
 std::string vulren::Message::get_file_name() const
 {
     std::filesystem::path file_path(m_location.file_name());
-    return file_path.filename().string();
+    return file_path.filename()
+                    .string();
 }
 
 Message::operator std::string() const noexcept

@@ -3,10 +3,8 @@
 //
 
 #pragma once
+
 #include "Vulren/Logging.hpp"
-
-
-namespace vulren
-{
-void say_hello();
-}
+#include "Vulren/Result.hpp"
+#include "Vulren/Instance.hpp"
+#include "Vulren/Resource.hpp"

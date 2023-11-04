@@ -3,13 +3,10 @@
 //
 
 #include "Vulren/vulren.hpp"
-#include <spdlog/sinks/stdout_color_sinks.h>
+#include "Vulren/ResourceManager.hpp"
+
 
 int main()
 {
-    auto logger = spdlog::stdout_color_st("some name");
-
-    vulren::set_logger(logger);
-
-    vulren::say_hello();
+    vulren::ResourceManager manager;
 }

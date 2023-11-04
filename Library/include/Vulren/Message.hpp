@@ -47,6 +47,7 @@ class Information
 {
 public:
     using Message::Message;
+
     std::string str() const noexcept override;
     Severity severity() const noexcept override;
 };
@@ -56,6 +57,7 @@ class Warning
 {
 public:
     using Message::Message;
+
     std::string str() const noexcept override;
     Severity severity() const noexcept override;
 };
@@ -65,6 +67,7 @@ class Error
 {
 public:
     using Message::Message;
+
     std::string str() const noexcept override;
     Severity severity() const noexcept override;
 };
@@ -74,6 +77,7 @@ class Fatal
 {
 public:
     using Message::Message;
+
     std::string str() const noexcept override;
     Severity severity() const noexcept override;
 };

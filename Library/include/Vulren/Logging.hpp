@@ -10,5 +10,5 @@
 
 namespace vulren
 {
-void set_logger(std::shared_ptr<spdlog::logger> & logger);
+void set_logger(std::shared_ptr<spdlog::logger>& logger);
 }
