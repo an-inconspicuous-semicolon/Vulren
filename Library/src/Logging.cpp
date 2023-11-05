@@ -2,7 +2,6 @@
 // Created by reece on 01/11/2023.
 //
 
-#include <utility>
 #include <spdlog/spdlog.h>
 
 #include "Vulren/Logging.hpp"

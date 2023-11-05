@@ -10,5 +10,5 @@
 namespace vulren
 {
 template <typename T>
-using Result = cpp::result<T, Message>;
+using Result = cpp::result<T, Message*>;
 }

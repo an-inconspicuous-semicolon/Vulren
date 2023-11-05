@@ -20,14 +20,6 @@ protected:
     Resource() = default;
 };
 
-class DummyResource
-        : public Resource
-{
-public:
-    DummyResource() = default;
-    ~DummyResource() override = default;
-};
-
 class ResourceHandle
 {
 public:
@@ -35,18 +27,6 @@ public:
 
     ResourceHandle(const ResourceHandle& other);
     ResourceHandle& operator=(const ResourceHandle& other) = delete;
-
-    virtual const Resource* operator->() const
-    { return get(); }
-
-    virtual const Resource* get() const
-    { return m_handle; }
-
-    virtual Resource* operator->()
-    { return get(); }
-
-    virtual Resource* get()
-    { return m_handle; }
 
 protected:
     friend class ResourceManager;
@@ -66,16 +46,16 @@ class Handle
 public:
     ~Handle() override = default;
 
-    const T* operator->() const override
+    const T* operator->() const
     { return get(); }
 
-    const T* get() const override
+    const T* get() const
     { return dynamic_cast<T*>(m_handle); }
 
-    T* operator->() override
+    T* operator->()
     { return get(); }
 
-    T* get() override
+    T* get()
     { return dynamic_cast<T*>(m_handle); }
 
 protected:

@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(Libraries/result)
 add_subdirectory(Libraries/spdlog)
+add_subdirectory(Libraries/glfw)
 
 add_library(Vulren STATIC
         Library/src/Message.cpp
@@ -28,13 +29,15 @@ add_library(Vulren STATIC
         Library/include/Vulren/Resource.hpp
         Library/src/ResourceManager.cpp
         Library/include/Vulren/ResourceManager.hpp
+        Library/src/Window.cpp
+        Library/include/Vulren/Window.hpp
 )
 target_include_directories(Vulren
         PUBLIC Library/include
         PRIVATE Library/src/internal
 )
 target_link_libraries(Vulren
-        PUBLIC spdlog Result
+        PUBLIC spdlog Result glfw
         PRIVATE
 )
 

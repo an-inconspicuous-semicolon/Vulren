@@ -8,3 +8,5 @@
 #include "Vulren/Result.hpp"
 #include "Vulren/Instance.hpp"
 #include "Vulren/Resource.hpp"
+#include "Vulren/ResourceManager.hpp"
+#include "Vulren/Window.hpp"

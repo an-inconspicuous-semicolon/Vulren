@@ -9,7 +9,6 @@
 namespace vulren
 {
 
-
 Message::Message(std::string name, std::string description, std::source_location location)
         : m_name(std::move(name)),
           m_description(std::move(description)),
@@ -34,9 +33,7 @@ std::string Message::str() const noexcept
     std::ostringstream oss;
 
     oss << "[message]";
-#ifdef _DEBUG
     oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ')';
-#endif
     oss << m_name << " - " << m_description;
 
     return oss.str();
@@ -47,14 +44,20 @@ Message::Severity Message::severity() const noexcept
     return Message::Severity::Information;
 }
 
+std::runtime_error Message::as_error() const
+{
+    return std::runtime_error(str());
+}
+
+Message::Message()
+= default;
+
 std::string Information::str() const noexcept
 {
     std::ostringstream oss;
 
     oss << "[info]";
-#ifdef _DEBUG
     oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ')';
-#endif
     oss << m_name << " - " << m_description;
 
     return oss.str();
@@ -70,9 +73,7 @@ std::string Warning::str() const noexcept
     std::ostringstream oss;
 
     oss << "[warning]";
-#ifdef _DEBUG
     oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ')';
-#endif
     oss << m_name << " - " << m_description;
 
     return oss.str();
@@ -88,9 +89,7 @@ std::string Error::str() const noexcept
     std::ostringstream oss;
 
     oss << "[ERROR]";
-#ifdef _DEBUG
     oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ')';
-#endif
     oss << m_name << " - " << m_description;
 
     return oss.str();
@@ -106,9 +105,7 @@ std::string Fatal::str() const noexcept
     std::ostringstream oss;
 
     oss << "[--FATAL--]";
-#ifdef _DEBUG
     oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ')';
-#endif
     oss << m_name << " - " << m_description;
 
     return oss.str();

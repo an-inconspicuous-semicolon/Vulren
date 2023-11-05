@@ -6,6 +6,7 @@
 
 #include <string>
 #include <source_location>
+#include <stdexcept>
 
 namespace vulren
 {
@@ -23,6 +24,7 @@ public:
     };
 
 public:
+    Message();
     Message(std::string name, std::string description, std::source_location location = std::source_location::current());
     virtual ~Message() = default;
 
@@ -30,6 +32,8 @@ public:
     explicit operator std::string() const noexcept;
 
     virtual Severity severity() const noexcept;
+
+    std::runtime_error as_error() const;
 
 protected:
     std::string get_file_name() const;
