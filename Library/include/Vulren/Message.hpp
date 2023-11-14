@@ -33,7 +33,7 @@ public:
 
     virtual Severity severity() const noexcept;
 
-    std::runtime_error as_error() const;
+    std::runtime_error as_exception() const;
 
 protected:
     std::string get_file_name() const;

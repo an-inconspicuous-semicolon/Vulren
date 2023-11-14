@@ -14,12 +14,12 @@ Instance::~Instance()
 = default;
 
 
-Result<Handle<Window>> Instance::create_window(unsigned int width, unsigned int height, std::string&& title)
+Result<Handle<Window>> Instance::create_window(const Window::Descriptor& descriptor)
 {
     Window* window;
     try
     {
-        window = new Window(width, height, std::forward<std::string>(title));
+        window = new Window(descriptor);
     } catch (std::exception& exception)
     {
         return cpp::fail(new Error("Failed to create window", exception.what()));
@@ -29,7 +29,7 @@ Result<Handle<Window>> Instance::create_window(unsigned int width, unsigned int 
     return create_handle<Window>(window);
 }
 
-void Instance::handle_events()
+void Instance::handle_events() // NOLINT(*-convert-member-functions-to-static)
 {
     Window::PollEvents();
 }

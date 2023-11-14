@@ -24,7 +24,6 @@ void ResourceManager::add_reference(Resource* resource)
     if (!m_resource_counts.contains(resource))
     {
         m_resource_counts.insert({resource, 1});
-        internal::log_info("registered resource");
         m_total_number_of_resources++;
         s_total_number_of_resources++;
         m_total_number_of_references++;
@@ -32,7 +31,6 @@ void ResourceManager::add_reference(Resource* resource)
     } else
     {
         m_resource_counts.at(resource)++;
-        internal::log_info("Added reference to resource");
         m_total_number_of_references++;
         s_total_number_of_references++;
     }
@@ -47,13 +45,11 @@ void ResourceManager::remove_reference(Resource* resource)
     } else
     {
         unsigned int count = --m_resource_counts.at(resource);
-        internal::log_info("removed reference from resource");
         if (count == 0)
         {
             m_resource_counts.erase(resource);
             auto it = std::find(m_resources.begin(), m_resources.end(), resource);
             m_resources.erase(it);
-            internal::log_info("deleted resource");
         }
     }
 }

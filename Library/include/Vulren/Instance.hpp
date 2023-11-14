@@ -18,7 +18,7 @@ public:
     Instance();
     ~Instance();
 
-    Result<Handle<Window>> create_window(unsigned int width, unsigned int height, std::string&& title);
+    Result<Handle<Window>> create_window(const Window::Descriptor& descriptor);
 
     void handle_events();
 

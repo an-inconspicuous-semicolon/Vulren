@@ -31,6 +31,7 @@ add_library(Vulren STATIC
         Library/include/Vulren/ResourceManager.hpp
         Library/src/Window.cpp
         Library/include/Vulren/Window.hpp
+        Library/include/Vulren/Wrapper.hpp
 )
 target_include_directories(Vulren
         PUBLIC Library/include
@@ -41,7 +42,6 @@ target_link_libraries(Vulren
         PRIVATE
 )
 
-
 add_executable(VulrenClient Client/main.cpp)
 target_include_directories(VulrenClient
         PRIVATE Client
@@ -49,3 +49,4 @@ target_include_directories(VulrenClient
 target_link_libraries(VulrenClient
         PUBLIC Vulren
 )
+

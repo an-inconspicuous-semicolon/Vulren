@@ -27,7 +27,7 @@ protected:
     template <typename T>
     Handle<T> create_handle(T* resource)
     {
-        return Handle(*this, resource);
+        return Handle<T>(this, resource);
     }
 
 protected:

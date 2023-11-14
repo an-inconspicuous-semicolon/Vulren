@@ -33,7 +33,7 @@ std::string Message::str() const noexcept
     std::ostringstream oss;
 
     oss << "[message]";
-    oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ')';
+    oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ") ";
     oss << m_name << " - " << m_description;
 
     return oss.str();
@@ -44,7 +44,7 @@ Message::Severity Message::severity() const noexcept
     return Message::Severity::Information;
 }
 
-std::runtime_error Message::as_error() const
+std::runtime_error Message::as_exception() const
 {
     return std::runtime_error(str());
 }
@@ -57,7 +57,7 @@ std::string Information::str() const noexcept
     std::ostringstream oss;
 
     oss << "[info]";
-    oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ')';
+    oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ") ";
     oss << m_name << " - " << m_description;
 
     return oss.str();
@@ -73,7 +73,7 @@ std::string Warning::str() const noexcept
     std::ostringstream oss;
 
     oss << "[warning]";
-    oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ')';
+    oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ") ";
     oss << m_name << " - " << m_description;
 
     return oss.str();
@@ -89,7 +89,7 @@ std::string Error::str() const noexcept
     std::ostringstream oss;
 
     oss << "[ERROR]";
-    oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ')';
+    oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ") ";
     oss << m_name << " - " << m_description;
 
     return oss.str();
@@ -105,7 +105,7 @@ std::string Fatal::str() const noexcept
     std::ostringstream oss;
 
     oss << "[--FATAL--]";
-    oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ')';
+    oss << " (" << get_file_name() << " > " << m_location.function_name() << ":" << m_location.line() << ") ";
     oss << m_name << " - " << m_description;
 
     return oss.str();
