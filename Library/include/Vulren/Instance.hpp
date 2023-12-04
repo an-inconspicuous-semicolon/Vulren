@@ -8,6 +8,7 @@
 #include "Vulren/Window.hpp"
 #include "Vulren/Result.hpp"
 
+
 namespace vulren
 {
 
@@ -16,6 +17,7 @@ class Instance
 {
 public:
     Instance();
+
     ~Instance();
 
     Result<Handle<Window>> create_window(const Window::Descriptor& descriptor);
@@ -23,6 +25,5 @@ public:
     void handle_events();
 
 };
-
 
 } // vulren

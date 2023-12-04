@@ -8,6 +8,7 @@
 #include <source_location>
 #include <stdexcept>
 
+
 namespace vulren
 {
 
@@ -32,7 +33,6 @@ public:
     explicit operator std::string() const noexcept;
 
     virtual Severity severity() const noexcept;
-
     std::runtime_error as_exception() const;
 
 protected:
@@ -44,7 +44,7 @@ protected:
     std::source_location m_location;
 };
 
-std::ostream& operator<<(std::ostream& stream, const Message& message);
+std::ostream& operator <<(std::ostream& stream, const Message& message);
 
 class Information
         : public Message
