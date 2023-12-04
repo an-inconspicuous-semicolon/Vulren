@@ -5,7 +5,8 @@
 #include <spdlog/spdlog.h>
 
 #include "Vulren/Logging.hpp"
-#include "internal/Logging.hpp"
+#include "internal/Logging.ipp"
+
 
 namespace vulren
 {

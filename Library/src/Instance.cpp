@@ -4,6 +4,7 @@
 
 #include "Vulren/Instance.hpp"
 
+
 namespace vulren
 {
 
@@ -13,14 +14,14 @@ Instance::Instance()
 Instance::~Instance()
 = default;
 
-
 Result<Handle<Window>> Instance::create_window(const Window::Descriptor& descriptor)
 {
     Window* window;
     try
     {
         window = new Window(descriptor);
-    } catch (std::exception& exception)
+    }
+    catch (std::exception& exception)
     {
         return cpp::fail(new Error("Failed to create window", exception.what()));
     }

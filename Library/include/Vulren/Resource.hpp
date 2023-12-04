@@ -7,6 +7,7 @@
 #include <type_traits>
 #include <exception>
 
+
 namespace vulren
 {
 class Resource;
@@ -42,10 +43,10 @@ public:
     virtual ~ResourceHandle();
 
     ResourceHandle(const ResourceHandle& other);
-    ResourceHandle& operator=(const ResourceHandle& other);
+    ResourceHandle& operator =(const ResourceHandle& other);
 
     ResourceHandle(ResourceHandle&& other) noexcept;
-    ResourceHandle& operator=(ResourceHandle&& other) noexcept;
+    ResourceHandle& operator =(ResourceHandle&& other) noexcept;
 
     class InvalidAccessException
             : public std::exception
@@ -73,7 +74,7 @@ public:
     Handle() = default;
     ~Handle() override = default;
 
-    const T* operator->() const
+    const T* operator ->() const
     { return get(); }
 
     const T* get() const
@@ -81,12 +82,13 @@ public:
         return get();
     }
 
-    T* operator->()
+    T* operator ->()
     { return get(); }
 
     T* get()
     {
-        if (!m_handle) throw InvalidAccessException();
+        if (!m_handle)
+        { throw InvalidAccessException(); }
         return dynamic_cast<T*>(m_handle);
     }
 
@@ -98,6 +100,5 @@ protected:
     {
     }
 };
-
 
 } // vulren

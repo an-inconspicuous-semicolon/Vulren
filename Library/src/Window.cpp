@@ -6,13 +6,13 @@
 #include <sstream>
 #include <utility>
 #include "Vulren/Window.hpp"
-#include "internal/Logging.hpp"
+#include "internal/Logging.ipp"
+
 
 namespace vulren
 {
 
 unsigned int Window::s_glfw_references = 0;
-
 
 Window::Window(Descriptor desc)
         : m_desc(std::move(desc))
@@ -46,21 +46,24 @@ Window::Window(Descriptor desc)
     {
         final_width = primary_video_mode->width;
         final_height = primary_video_mode->height;
-    } else
+    }
+    else
     {
         final_width = static_cast<int>(m_desc.width);
         final_height = static_cast<int>(m_desc.height);
     }
 
     GLFWmonitor* final_monitor = nullptr;
-    if (m_desc.fullscreen) final_monitor = primary_monitor;
+    if (m_desc.fullscreen)
+    { final_monitor = primary_monitor; }
 
 
     GLFWwindow* ptr = glfwCreateWindow(
             final_width, final_height, m_desc.title
                                              .c_str(), final_monitor, nullptr
     );
-    if (ptr == nullptr) throw std::runtime_error("Failed to create glfw Window");
+    if (ptr == nullptr)
+    { throw std::runtime_error("Failed to create glfw Window"); }
 
     glfwSetWindowUserPointer(ptr, this);
     glfwSetWindowCloseCallback(ptr, GlfwWindowCloseCallback);
@@ -93,7 +96,6 @@ void Window::close()
     }
 }
 
-
 void Window::PollEvents()
 {
     glfwPollEvents();
@@ -101,7 +103,8 @@ void Window::PollEvents()
 
 void Window::InitialiseGlfw()
 {
-    if (!glfwInit()) throw std::runtime_error("Failed to initialise glfw");
+    if (!glfwInit())
+    { throw std::runtime_error("Failed to initialise glfw"); }
     glfwSetErrorCallback(GlfwErrorCallback);
 }
 
@@ -147,7 +150,8 @@ void Window::update_window_size(int expected_width, int expected_height)
 {
     int actual_width, actual_height;
 
-    // sometimes the width of a window is changed by the window manager. (especially with tiling window managers on linux) so we need to check that we got what we wanted
+    // sometimes the width of a window is changed by the window manager.
+    // Especially with tiling window managers on linux. so we need to check that we got what we wanted.
     glfwGetWindowSize(m_handle, &actual_width, &actual_height);
 
     if (actual_width != expected_width || actual_height != expected_height)
@@ -182,7 +186,8 @@ void Window::GlfwWindowCloseCallback(GLFWwindow* window)
 
     for (const auto& callback: window_ptr->m_callbacks_for_window_close)
     {
-        if (callback(*window_ptr)) break;
+        if (callback(*window_ptr))
+        { break; }
     }
 
     window_ptr->close();

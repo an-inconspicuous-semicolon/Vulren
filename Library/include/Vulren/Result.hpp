@@ -7,6 +7,7 @@
 #include <result.hpp>
 #include "Vulren/Message.hpp"
 
+
 namespace vulren
 {
 template <typename T>

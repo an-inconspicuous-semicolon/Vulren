@@ -5,7 +5,8 @@
 #include <stdexcept>
 #include <algorithm>
 #include "Vulren/ResourceManager.hpp"
-#include "internal/Logging.hpp"
+#include "internal/Logging.ipp"
+
 
 namespace vulren
 {
@@ -28,7 +29,8 @@ void ResourceManager::add_reference(Resource* resource)
         s_total_number_of_resources++;
         m_total_number_of_references++;
         s_total_number_of_references++;
-    } else
+    }
+    else
     {
         m_resource_counts.at(resource)++;
         m_total_number_of_references++;
@@ -42,7 +44,8 @@ void ResourceManager::remove_reference(Resource* resource)
     {
         // something funky happened
         throw std::invalid_argument("Invalid resource pointer");
-    } else
+    }
+    else
     {
         unsigned int count = --m_resource_counts.at(resource);
         if (count == 0)

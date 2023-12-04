@@ -6,6 +6,7 @@
 
 #include "Vulren/Result.hpp"
 
+
 namespace vulren::internal
 {
 
@@ -17,7 +18,8 @@ void log_fatal(std::string_view message);
 template <typename T>
 void log_result_on_fail(const Result<T> result)
 {
-    if (!result.has_error()) return;
+    if (!result.has_error())
+    { return; }
     Message& message = result.error();
 
     switch (message.severity())

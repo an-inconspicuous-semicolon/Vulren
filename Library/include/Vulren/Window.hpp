@@ -4,18 +4,17 @@
 
 #pragma once
 
+#define GLFW_EXPOSE_NATIVE_WIN32
+
 #include <string>
 #include <functional>
 #include <forward_list>
-
 #include <GLFW/glfw3.h>
-
-#define GLFW_EXPOSE_NATIVE_WIN32
-
 #include <GLFW/glfw3native.h>
 
 #include "Vulren/Resource.hpp"
 #include "Vulren/Wrapper.hpp"
+
 
 namespace vulren
 {
@@ -58,6 +57,7 @@ public:
     ~Window() override;
 
     void close();
+
     bool is_open();
 
     GLFWwindow* get() override;

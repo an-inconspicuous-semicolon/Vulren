@@ -21,7 +21,7 @@ add_library(Vulren STATIC
         Library/src/Result.cpp
         Library/include/Vulren/Result.hpp
         Library/src/Logging.cpp
-        Library/src/internal/Logging.hpp
+        Library/src/internal/Logging.ipp
         Library/include/Vulren/Logging.hpp
         Library/src/Instance.cpp
         Library/include/Vulren/Instance.hpp

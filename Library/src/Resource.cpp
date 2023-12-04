@@ -5,6 +5,7 @@
 #include "Vulren/Resource.hpp"
 #include "Vulren/ResourceManager.hpp"
 
+
 namespace vulren
 {
 
@@ -13,7 +14,8 @@ Resource::~Resource()
 
 ResourceHandle::~ResourceHandle()
 {
-    if (!m_handle) return;
+    if (!m_handle)
+    { return; }
     m_manager->remove_reference(m_handle);
 }
 
@@ -38,9 +40,10 @@ ResourceHandle::ResourceHandle()
 {
 }
 
-ResourceHandle& ResourceHandle::operator=(const ResourceHandle& other)
+ResourceHandle& ResourceHandle::operator =(const ResourceHandle& other)
 {
-    if (this == &other) return *this;
+    if (this == &other)
+    { return *this; }
 
     m_handle = other.m_handle;
     m_manager = other.m_manager;
@@ -57,9 +60,10 @@ ResourceHandle::ResourceHandle(ResourceHandle&& other) noexcept
     m_manager = other.m_manager;
 }
 
-ResourceHandle& ResourceHandle::operator=(ResourceHandle&& other) noexcept
+ResourceHandle& ResourceHandle::operator =(ResourceHandle&& other) noexcept
 {
-    if (this == &other) return *this;
+    if (this == &other)
+    { return *this; }
 
     m_handle = other.m_handle;
     other.m_handle = nullptr;
