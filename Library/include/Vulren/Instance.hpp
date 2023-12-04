@@ -17,6 +17,7 @@ class Instance
 {
 public:
     Instance();
+
     ~Instance();
 
     Result<Handle<Window>> create_window(const Window::Descriptor& descriptor);
